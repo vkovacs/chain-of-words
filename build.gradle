@@ -14,6 +14,10 @@ application {
     mainClass = 'hu.crs.chainofwords.Application'
 }
 
+run {
+    standardInput = System.in
+}
+
 dependencies {
     implementation 'org.codehaus.groovy:groovy-all:3.0.5'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
