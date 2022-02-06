@@ -15,6 +15,7 @@ class Application {
             word = System.in.newReader().readLine()
             if (previousReplyWord != "" && wordService.firstletter(word) != wordService.lastLetter(previousReplyWord)) {
                 println error("Hibás keződbetű a beírt szóban!")
+                continue
             }
             if (usedWords.contains(word)) {
                 println error("Már mondtad ezt a szót! Mondj újat helyette!")

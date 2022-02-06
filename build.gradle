@@ -18,6 +18,8 @@ run {
     standardInput = System.in
 }
 
+applicationDefaultJvmArgs = ["-Dfile.encoding=UTF-8"]
+
 dependencies {
     implementation 'org.codehaus.groovy:groovy-all:3.0.5'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
