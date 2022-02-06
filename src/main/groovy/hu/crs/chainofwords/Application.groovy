@@ -21,6 +21,12 @@ class Application {
                 println error("Már mondtad ezt a szót! Mondj újat helyette!")
                 continue
             }
+
+            if (!wordService.known(word)) {
+                println error("Nem ismerem ezt a szót, mondj mást!")
+                continue
+            }
+
             usedWords << word
             def lastLetter = wordService.lastLetter(word)
             previousReplyWord = wordService.next(lastLetter)

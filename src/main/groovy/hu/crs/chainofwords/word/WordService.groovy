@@ -35,4 +35,8 @@ class WordService {
         }
         return word[-1]
     }
+
+    boolean known(String word) {
+        dictionary[firstletter(word)].contains(word)
+    }
 }
