@@ -13,8 +13,12 @@ class Application {
         Set<String> usedWords = []
         String replyWord = ""
         println "Szia, kezdjük!"
-        while (word != "bye") {
-            word = System.in.newReader("UTF-8").readLine()
+
+        main_loop:
+        while (true) {
+            word = System.in.newReader("UTF-8").readLine().toLowerCase()
+            if (word == "bye") break main_loop
+
             if (replyWord != "" && wordService.firstletter(word) != wordService.lastLetter(replyWord)) {
                 println error("Hibás keződbetű a beírt szóban! A várt kezdőbetű: ${wordService.lastLetter(replyWord)}")
                 continue
