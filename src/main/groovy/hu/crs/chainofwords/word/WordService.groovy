@@ -25,4 +25,14 @@ class WordService {
         def size = dictionary[letter].size()
         return dictionary[letter][random.nextInt(size)]
     }
+
+    String lastLetter(String word) {
+        if (word.endsWith("dzs")) {
+            return word[-3..-1]
+        }
+        if (word.endsWith("cs") || word.endsWith("dz") || word.endsWith("gy") || word.endsWith("ly") || word.endsWith("ny") || word.endsWith("sz") || word.endsWith("ty") || word.endsWith("zs")) {
+            return word[-2..-1]
+        }
+        return word[-1]
+    }
 }

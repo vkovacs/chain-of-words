@@ -8,12 +8,29 @@ class Application {
 
         WordService wordService = new WordService(load(filename))
         String word = ""
+        Set<String> usedWords = []
+        String previousReplyWord = ""
+        println "Szia, kezdjük!"
         while (word != "bye") {
             word = System.in.newReader().readLine()
+            if (previousReplyWord != "" && wordService.firstletter(word) != wordService.lastLetter(previousReplyWord)) {
+                println error("Hibás keződbetű a beírt szóban!")
+            }
+            if (usedWords.contains(word)) {
+                println error("Már mondtad ezt a szót! Mondj újat helyette!")
+                continue
+            }
+            usedWords << word
             def firstLetter = wordService.firstletter(word)
-            println wordService.next(firstLetter)
+            previousReplyWord = wordService.next(firstLetter)
+            println(previousReplyWord)
         }
-        //wordService.dictionary.each {println( it.key)}
+    }
+
+    static String error(String text) {
+        def red = "\u001B[31m"
+        def normal = "\u001B[0m"
+        red + text + normal
     }
 
     static List<String> load(String filename) {
