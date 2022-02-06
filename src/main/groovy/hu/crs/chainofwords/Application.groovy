@@ -22,8 +22,8 @@ class Application {
                 continue
             }
             usedWords << word
-            def firstLetter = wordService.firstletter(word)
-            previousReplyWord = wordService.next(firstLetter)
+            def lastLetter = wordService.lastLetter(word)
+            previousReplyWord = wordService.next(lastLetter)
             println(previousReplyWord)
         }
     }
