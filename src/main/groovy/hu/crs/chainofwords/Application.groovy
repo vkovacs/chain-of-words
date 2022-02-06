@@ -24,7 +24,7 @@ class Application {
                 continue
             }
             if (usedWords.contains(word)) {
-                println error("Már mondtad ezt a szót! Mondj újat helyette!")
+                println error("Már volt ez a szót! Mondj újat helyette!")
                 continue
             }
 
