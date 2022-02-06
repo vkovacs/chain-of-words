@@ -2,6 +2,8 @@ package hu.crs.chainofwords
 
 import hu.crs.chainofwords.word.WordService
 
+import java.nio.charset.Charset
+
 class Application {
     static void main(String[] args) {
         String filename = args.size() > 0 ? args[0] : "src/main/resources/words.txt"
@@ -9,12 +11,12 @@ class Application {
         WordService wordService = new WordService(load(filename))
         String word = ""
         Set<String> usedWords = []
-        String previousReplyWord = ""
+        String replyWord = ""
         println "Szia, kezdjük!"
         while (word != "bye") {
-            word = System.in.newReader().readLine()
-            if (previousReplyWord != "" && wordService.firstletter(word) != wordService.lastLetter(previousReplyWord)) {
-                println error("Hibás keződbetű a beírt szóban!")
+            word = System.in.newReader("UTF-8").readLine()
+            if (replyWord != "" && wordService.firstletter(word) != wordService.lastLetter(replyWord)) {
+                println error("Hibás keződbetű a beírt szóban! A várt kezdőbetű: ${wordService.lastLetter(replyWord)}")
                 continue
             }
             if (usedWords.contains(word)) {
@@ -26,11 +28,12 @@ class Application {
                 println error("Nem ismerem ezt a szót, mondj mást!")
                 continue
             }
-
             usedWords << word
             def lastLetter = wordService.lastLetter(word)
-            previousReplyWord = wordService.next(lastLetter)
-            println(previousReplyWord)
+
+            replyWord = wordService.next(lastLetter)
+
+            println(replyWord)
         }
     }
 
