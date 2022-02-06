@@ -28,10 +28,12 @@ class Application {
                 println error("Nem ismerem ezt a szót, mondj mást!")
                 continue
             }
-            usedWords << word
             def lastLetter = wordService.lastLetter(word)
 
             replyWord = wordService.next(lastLetter)
+
+            usedWords << word
+            usedWords << replyWord
 
             println(replyWord)
         }
